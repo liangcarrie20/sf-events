@@ -2,12 +2,13 @@
 
 import UIKit
 
-class Meal: NSObject, NSCoding {
+class Event: NSObject, NSCoding {
     // MARK: Properties
     
     var name: String
     var photo: UIImage?
     var rating: Int
+    var desc: String
     
     // MARK: Archiving Paths
     
@@ -20,15 +21,17 @@ class Meal: NSObject, NSCoding {
         static let nameKey = "name"
         static let photoKey = "photo"
         static let ratingKey = "rating"
+        static let descKey = "desc"
     }
 
     // MARK: Initialization
     
-    init?(name: String, photo: UIImage?, rating: Int) {
+    init?(name: String, photo: UIImage?, rating: Int, desc: String) {
         // Initialize stored properties.
         self.name = name
         self.photo = photo
         self.rating = rating
+        self.desc = desc
         
         super.init()
         
@@ -44,6 +47,7 @@ class Meal: NSObject, NSCoding {
         aCoder.encodeObject(name, forKey: PropertyKey.nameKey)
         aCoder.encodeObject(photo, forKey: PropertyKey.photoKey)
         aCoder.encodeInteger(rating, forKey: PropertyKey.ratingKey)
+        aCoder.encodeObject(desc, forKey: PropertyKey.descKey)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -54,8 +58,10 @@ class Meal: NSObject, NSCoding {
         
         let rating = aDecoder.decodeIntegerForKey(PropertyKey.ratingKey)
         
+        let desc = aDecoder.decodeObjectForKey(PropertyKey.descKey) as! String
+        
         // Must call designated initializer.
-        self.init(name: name, photo: photo, rating: rating)
+        self.init(name: name, photo: photo, rating: rating, desc: desc)
     }
 
 }

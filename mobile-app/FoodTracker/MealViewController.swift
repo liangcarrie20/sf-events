@@ -13,6 +13,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     // MARK: Properties
     
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var descTextField: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var ratingControl: RatingControl!
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -21,7 +22,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         This value is either passed by `MealTableViewController` in `prepareForSegue(_:sender:)`
         or constructed as part of adding a new meal.
     */
-    var meal: Meal?
+    var event: Event?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +31,11 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         nameTextField.delegate = self
         
         // Set up views if editing an existing Meal.
-        if let meal = meal {
-            navigationItem.title = meal.name
-            nameTextField.text   = meal.name
-            photoImageView.image = meal.photo
-            ratingControl.rating = meal.rating
+        if let event = event {
+            navigationItem.title = event.name
+            nameTextField.text   = event.name
+            photoImageView.image = event.photo
+            ratingControl.rating = event.rating
         }
         
         // Enable the Save button only if the text field has a valid Meal name.
@@ -102,9 +103,10 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
             let name = nameTextField.text ?? ""
             let photo = photoImageView.image
             let rating = ratingControl.rating
+            let desc = descTextField.text ?? ""
             
             // Set the meal to be passed to MealListTableViewController after the unwind segue.
-            meal = Meal(name: name, photo: photo, rating: rating)
+            event = Event(name: name, photo: photo, rating: rating, desc: desc)
         }
     }
     

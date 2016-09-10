@@ -3,7 +3,7 @@ import UIKit
 class MealTableViewController: UITableViewController {
     // MARK: Properties
     
-    var events = [Meal]()
+    var events = [Event]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,34 +22,34 @@ class MealTableViewController: UITableViewController {
     
     func loadSampleEvents() {
         let photo1 = UIImage(named: "sumo")!
-        let event1 = Meal(name: "Sumo Wrestling Festival", photo: photo1, rating: 4)!
+        let event1 = Event(name: "Sumo Wrestling Festival", photo: photo1, rating: 4, desc: "This is really fun!")!
         
         let photo2 = UIImage(named: "sundae")!
-        let event2 = Meal(name: "Chocolate Festival", photo: photo2, rating: 5)!
+        let event2 = Event(name: "Chocolate Festival", photo: photo2, rating: 5, desc: "This is really fun!")!
         
         let photo3 = UIImage(named: "opera")!
-        let event3 = Meal(name: "Opera in the Park", photo: photo3, rating: 3)!
+        let event3 = Event(name: "Opera in the Park", photo: photo3, rating: 3, desc: "This is really fun!")!
         
         let photo4 = UIImage(named: "nfl")!
-        let event4 = Meal(name: "NFL Red Zone Watch & Brunch", photo: photo4, rating: 1)!
+        let event4 = Event(name: "NFL Red Zone Watch & Brunch", photo: photo4, rating: 1, desc: "This is really fun!")!
         
         let photo5 = UIImage(named: "giants")!
-        let event5 = Meal(name: "Giant Race Volunteer", photo: photo5, rating: 1)!
+        let event5 = Event(name: "Giant Race Volunteer", photo: photo5, rating: 1, desc: "This is really fun!")!
         
         let photo6 = UIImage(named: "sing")!
-        let event6 = Meal(name: "The Sunday Sing Thing", photo: photo6, rating: 1)!
+        let event6 = Event(name: "The Sunday Sing Thing", photo: photo6, rating: 1, desc: "This is really fun!")!
         
         let photo7 = UIImage(named: "witch")!
-        let event7 = Meal(name: "Witches' Brew Comedy", photo: photo7, rating: 1)!
+        let event7 = Event(name: "Witches' Brew Comedy", photo: photo7, rating: 1, desc: "This is really fun!")!
         
         let photo8 = UIImage(named: "women")!
-        let event8 = Meal(name: "Women in Science", photo: photo8, rating: 1)!
+        let event8 = Event(name: "Women in Science", photo: photo8, rating: 1, desc: "This is really fun!")!
         
         let photo9 = UIImage(named: "poetry")!
-        let event9 = Meal(name: "Poetry Readings @ Lunch", photo: photo9, rating: 1)!
+        let event9 = Event(name: "Poetry Readings @ Lunch", photo: photo9, rating: 1, desc: "This is really fun!")!
         
         let photo10 = UIImage(named: "whiskey")!
-        let event10 = Meal(name: "The Macallan", photo: photo10, rating: 1)!
+        let event10 = Event(name: "The Macallan", photo: photo10, rating: 1, desc: "This is really fun!")!
         
         events += [event1, event2, event3, event4, event5, event6, event7, event8, event9, event10]
     }
@@ -131,7 +131,7 @@ class MealTableViewController: UITableViewController {
             if let selectedMealCell = sender as? MealTableViewCell {
                 let indexPath = tableView.indexPathForCell(selectedMealCell)!
                 let selectedMeal = events[indexPath.row]
-                mealDetailViewController.meal = selectedMeal
+                mealDetailViewController.event = selectedMeal
             }
         }
         else if segue.identifier == "AddItem" {
@@ -141,7 +141,7 @@ class MealTableViewController: UITableViewController {
     
 
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.sourceViewController as? MealViewController, meal = sourceViewController.meal {
+        if let sourceViewController = sender.sourceViewController as? MealViewController, meal = sourceViewController.event {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 // Update an existing meal.
                 events[selectedIndexPath.row] = meal
@@ -160,13 +160,13 @@ class MealTableViewController: UITableViewController {
     // MARK: NSCoding
     
     func saveMeals() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(events, toFile: Meal.ArchiveURL.path!)
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(events, toFile: Event.ArchiveURL.path!)
         if !isSuccessfulSave {
-            print("Failed to save meals...")
+            print("Failed to save events...")
         }
     }
     
-    func loadMeals() -> [Meal]? {
-        return NSKeyedUnarchiver.unarchiveObjectWithFile(Meal.ArchiveURL.path!) as? [Meal]
+    func loadMeals() -> [Event]? {
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(Event.ArchiveURL.path!) as? [Event]
     }
 }
