@@ -1,0 +1,19 @@
+<div>
+<h1>All Events in San Francisco</h1>
+
+<table style="width:50%">
+  	<tr>
+    	<th>Start Time</th>
+    	<th>Event</th> 
+    	<th>Cost</th>
+  	</tr>
+  	<% @events.each do |event| %>
+  	<tr>
+    	<td><%= event.event_time %></td>
+    	<td><%= event.title %></td> 
+    	<td><%= event.price %></td>
+  	</tr>
+  	<% end %>
+</table>
+
+</div>
