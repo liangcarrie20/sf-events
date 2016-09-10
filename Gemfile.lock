@@ -89,6 +89,7 @@ DEPENDENCIES
   capybara
   factory_girl
   faker
+  nokogiri
   pg
   rack-test
   rake
@@ -97,6 +98,3 @@ DEPENDENCIES
   shoulda-matchers
   sinatra
   sinatra-contrib
-
-BUNDLED WITH
-   1.12.5
