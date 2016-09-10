@@ -5,7 +5,7 @@ class CreateEvents < ActiveRecord::Migration
   		t.text :description
   		t.string :address
   		t.date :event_date
-  		t.time :event_time
+  		t.string :event_time
   		t.string :price
   		t.boolean :featured
   		t.float :lattitude
