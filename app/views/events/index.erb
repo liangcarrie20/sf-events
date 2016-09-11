@@ -4,13 +4,17 @@
 <table style="width:50%">
   	<tr>
     	<th>Start Time</th>
-    	<th>Event</th> 
+    	<th>Event</th>
     	<th>Cost</th>
   	</tr>
   	<% @events.each do |event| %>
   	<tr>
     	<td><%= event.event_time %></td>
-    	<td><%= event.title %></td> 
+      <div class="see-info">
+
+      <td> <a href="/events/<%= event.id %>"><%= event.title %></a></td>
+      </div>
+
     	<td><%= event.price %></td>
   	</tr>
   	<% end %>
