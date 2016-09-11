@@ -1,7 +1,7 @@
 get '/' do
-  redirect '/homepage'
+  redirect '/events'
 end
 
-get '/homepage' do
-  erb :'homepage/index'
-end
+# get '/homepage' do
+#   erb :'homepage/index'
+# end

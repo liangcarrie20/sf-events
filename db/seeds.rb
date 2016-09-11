@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
+Event.delete_all
 
 User.create(email: 'bobbysags@gmail.com', name: 'Bob Saget', password: '123')
 
