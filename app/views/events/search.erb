@@ -5,18 +5,22 @@
 </head>
 <body>
 <!-- do a form -->
-  <div id="budget-list">
 
-    <input type="text" class="fuzzy-search" />
-    <ul class="list">
-      <li><p class="name">0-$5</p></li>
-      <li><p class="name">$5-$10</p></li>
-      <li><p class="name">$10-$20</p></li>
-      <li><p class="name">$20-$30</p></li>
-      <li><p class="name">>$30</p></li>
-    </ul>
-  </div>
 
+<form action='events/search'>
+    <label for='search_field'>
+    Budget:<br>
+    <input id="event_search" type="text" name="budget" value="0-$5">
+    <input id="event_search" type="text" name="budget" value="$5-$10">
+    <input id="event_search" type="text" name="budget" value="$10-$20">
+    <input id="event_search" type="text" name="budget" value="$20-$30">
+    <input id="event_search" type="text" name="budget" value=">$30">
+    <input class="btn btn-primary" type="submit" value="Search">
+
+    </label>
+
+
+</form>
 
 
 
