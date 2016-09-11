@@ -1,7 +1,9 @@
+Event.delete_all
+
 User.create(email: 'bobbysags@gmail.com', name: 'Bob Saget', password: '123')
 
 
-20.times do 
+20.times do
 	Event.create(
 		title: Faker::Company.bs,
 		description: Faker::Lorem.sentences(3),
