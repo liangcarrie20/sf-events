@@ -23,7 +23,7 @@ User.create(email: 'bobbysags@gmail.com', name: 'Bob Saget', password: '123')
   nokogiri_doc = Nokogiri.parse(refined_doc)
 
  @date = nokogiri_doc.css('tr')[1].text
-  times_table = nokogiri_doc.css('tr')[2..-1]
+  times_table = nokogiri_doc.css('tr')[3..-1]
   times_table.each do |t|
     @time = t.children.first.text.squish
     @price = t.children.last.text.squish

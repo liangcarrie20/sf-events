@@ -1,0 +1,29 @@
+body {
+  background: url(/golden-gate-bridge1.jpg) no-repeat fixed;
+  color: white;
+  font-family: Bitter;
+}
+
+a {
+  color: lightblue;
+}
+
+.container {
+  width: 80%;
+}
+
+h1, th {
+  text-align: center;
+}
+
+.form-group {
+  /*width: 20px;*/
+  text-align: center;
+}
+
+select {
+  width: 200px;
+}
+/*#budget-list {
+  
+}*/

@@ -1,26 +1,27 @@
-<<!DOCTYPE html>
-<html>
-<head>
-  <title>USER DATA</title>
-</head>
-<body>
-<!-- do a form -->
-  <div id="budget-list">
+<div class="container">
+<div id="picture">
+    <h1>Your Search Results</h1>
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+      <table class="table" style="width:100%">
+         <tr>
+           <th>Start Time</th>
+           <th>Event</th>
+           <th>Cost</th>
+         </tr>
+         <% @events.each do |event| %>
+         <tr>
+           <td><%= event.event_time %></td>
+           <div class="see-info">
 
-    <input type="text" class="fuzzy-search" />
-    <ul class="list">
-      <li><p class="name">0-$5</p></li>
-      <li><p class="name">$5-$10</p></li>
-      <li><p class="name">$10-$20</p></li>
-      <li><p class="name">$20-$30</p></li>
-      <li><p class="name">>$30</p></li>
-    </ul>
+            <td> <a href="/events/<%= event.id %>"><%= event.title %></a></td>
+          </div>
+
+          <td><%= event.price %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
-
-
-
-
-
-
-</body>
-</html>
+</div>
+</div>

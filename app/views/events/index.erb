@@ -1,23 +1,81 @@
-<div>
-<h1>All Events in San Francisco</h1>
+<div class="container">
+  <div id="budget-list">
+  <form action="/events" method="post" class="col-xs-12">
+  <div class="form-group">
+    Budget:
+    <select name="price" >
+      <option value="FREE">Free</option>
+      <option value="$7">$7 and under</option>
+      <option value="$10">$7 - 15</option>
+      <option value="$15">$15 and above</option>
+    </select>
+    <input class="btn btn-secondary" type="submit" value="Find">
+    </div>
+  </form>
 
-<table style="width:50%">
-  	<tr>
-    	<th>Start Time</th>
-    	<th>Event</th>
-    	<th>Cost</th>
-  	</tr>
-  	<% @events.each do |event| %>
-  	<tr>
-    	<td><%= event.event_time %></td>
-      <div class="see-info">
+  <form action="/events1" method="post">
+  <div class="form-group">
+    Location:
+    <select name="address">
+      <option value="Oakland">Oakland</option>
+      <option value="Chinatown">Chinatown</option>
+      <option value="Mountain View">Mountain View</option>
+      <option value="SF">SF</option>
+    </select>
+    <input class="btn btn-secondary" type="submit" value="Find">
+    </div>
+  </form>
 
-      <td> <a href="/events/<%= event.id %>"><%= event.title %></a></td>
-      </div>
+    <form action="/events2" method="post">
+  <div class="form-group">
+    Time:
+    <select name="event_time">
+      <option value="All Day">All Day</option>
+      <option value="11:00 am">11 AM</option>
+      <option value="5:00 pm">5 PM</option>
+      <option value="9:00 pm">9 PM</option>
+    </select>
+    <input class="btn btn-secondary" type="submit" value="Find">
+    </div>
+  </form>
 
-    	<td><%= event.price %></td>
-  	</tr>
-  	<% end %>
-</table>
+    <form action="/events3" method="post">
+    <div class="form-group">
+    Day:
+    <select name="event_date">
+      <option value="Saturday, September 10, 2016">Today</option>
+      <option value="11:00 am">Tomorrow</option>
+      <option value="5:00 pm">Next Weekend</option>
+      <option value="9:00 pm">Next Month</option>
+    </select>
+    <input class="btn btn-secondary" type="submit" value="Find">
+    </div>
+  </form>
+    
+  </div>
+  <div id="picture" class="col-xs-12">
+    <h1>All Events</h1>
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+      <table class="table" style="width:100%">
+         <tr>
+           <th>Start Time</th>
+           <th>Event</th>
+           <th>Cost</th>
+         </tr>
+         <% @events.each do |event| %>
+         <tr>
+           <td><%= event.event_time %></td>
+           <div class="see-info">
 
+            <td> <a href="/events/<%= event.id %>"><%= event.title %></a></td>
+          </div>
+
+          <td><%= event.price %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
 </div>
